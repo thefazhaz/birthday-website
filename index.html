@@ -1,51 +1,100 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const pages = document.querySelectorAll(".page");
-    let currentPage = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #FAF3E0; }
+        .page { display: none; }
+        .active { display: block; }
+    </style>
+</head>
+<body>
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            page.style.display = i === index ? "block" : "none";
+    <!-- Passcode Page -->
+    <div class="page active">
+        <h2>Enter Our Anniversary Date (DDMMYYYY) ❤️</h2>
+        <input type="text" id="passcode-input" placeholder="Enter passcode">
+        <button id="passcode-btn">Enter</button>
+        <p id="passcode-error" style="color: red;"></p>
+    </div>
+
+    <!-- Timer Page -->
+    <div class="page">
+        <h3>We've been talking for:</h3>
+        <p id="timer"></p>
+        <button class="next-btn">Next</button>
+    </div>
+
+    <!-- Message Page -->
+    <div class="page">
+        <p>Happy Birthday, my love! 💖 I'm so grateful to have you in my life...</p>
+        <button class="next-btn">Next</button>
+    </div>
+
+    <!-- Songs Page -->
+    <div class="page">
+        <h3>Songs that remind me of you 🎵</h3>
+        <ul>
+            <li>💖 Song 1</li>
+            <li>💖 Song 2</li>
+            <li>💖 Song 3</li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const pages = document.querySelectorAll(".page");
+            let currentPage = 0;
+
+            function showPage(index) {
+                pages.forEach((page, i) => {
+                    page.style.display = i === index ? "block" : "none";
+                });
+            }
+
+            function checkPasscode() {
+                const input = document.getElementById("passcode-input").value;
+                if (input.trim() === "21022024") {
+                    currentPage = 1;
+                    showPage(currentPage);
+                    startTimer();
+                } else {
+                    document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
+                }
+            }
+
+            function startTimer() {
+                const startDate = new Date("February 21, 2024").getTime();
+                setInterval(() => {
+                    const now = new Date().getTime();
+                    const difference = now - startDate;
+
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                    document.getElementById("timer").textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs`;
+                }, 1000);
+            }
+
+            function nextPage() {
+                currentPage++;
+                if (currentPage < pages.length) {
+                    showPage(currentPage);
+                }
+            }
+
+            document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
+            document.querySelectorAll(".next-btn").forEach(button => {
+                button.addEventListener("click", nextPage);
+            });
+
+            showPage(0); // Show the first page initially
         });
-    }
+    </script>
 
-    function checkPasscode() {
-        const input = document.getElementById("passcode-input").value;
-        if (input.trim() === "21022024") {
-            currentPage = 1;
-            showPage(currentPage);
-            startTimer();
-        } else {
-            document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
-        }
-    }
-
-    function startTimer() {
-        const startDate = new Date("February 21, 2024").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const difference = now - startDate;
-
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            document.getElementById("timer").textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs`;
-        }, 1000);
-    }
-
-    function nextPage() {
-        currentPage++;
-        if (currentPage < pages.length) {
-            showPage(currentPage);
-        }
-    }
-
-    document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
-    document.querySelectorAll(".next-btn").forEach(button => {
-        button.addEventListener("click", nextPage);
-    });
-
-    showPage(0); // Show the first page initially
-});
-
+</body>
+</html>
