@@ -3,74 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Happy Birthday</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-screen">
-        <h2>Enter Our Anniversary Date (DDMMYYYY) ❤️</h2>
-        <input type="password" id="password" placeholder="e.g. 15062023">
-        <button onclick="checkPassword()">Enter</button>
-        <p id="error-message" style="color: red; display: none;">Wrong date! Try again.</p>
+
+    <!-- Page 1: Passcode -->
+    <div class="page" id="passcode-page">
+        <h1>Enter Our Anniversary Date (DDMMYYYY) ❤️</h1>
+        <input type="text" id="passcode-input" placeholder="Enter passcode">
+        <button id="enter-btn">Enter</button>
+        <p id="passcode-error" style="color: red;"></p>
     </div>
 
-    <div id="main-content" style="display: none;">
-        <h1>🎉 Happy Birthday, Love! 🎂</h1>
-        <p>You're the best thing that ever happened to me ❤️</p>
-        <button onclick="showMessage()">Click for a Surprise 🎁</button>
-        <p id="hiddenMessage" style="display:none;">I love you more than words can say! 💖</p>
+    <!-- Page 2: Timer -->
+    <div class="page" id="timer-page">
+        <h2>We've been talking for:</h2>
+        <p id="timer"></p>
+        <button onclick="nextPage()">Next</button>
+    </div>
+
+    <!-- Page 3: Message -->
+    <div class="page" id="message-page">
+        <p>Happy Birthday, my love! 💖 I'm so grateful to have you in my life...</p>
+        <button onclick="nextPage()">Next</button>
+    </div>
+
+    <!-- Page 4: Songs -->
+    <div class="page" id="songs-page">
+        <h2>Songs that remind me of you 🎵</h2>
+        <ul>
+            <li>💖 Song 1</li>
+            <li>💖 Song 2</li>
+            <li>💖 Song 3</li>
+        </ul>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-<div class="countdown">
-    <h2>We've been talking for:</h2>
-    <p id="timer"></p>
-</div>
-<div class="scroll-container">
-    <p class="scroll-text">Happy Birthday, my love! 💖 I’m so grateful to have you in my life...</p>
-</div>
-<a href="scrapbook.html" class="button">📖 Open Our Scrapbook</a>
-document.addEventListener("DOMContentLoaded", function() {
-    const pages = document.querySelectorAll(".page");
-    let currentPage = 0;
-
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            page.classList.toggle("active", i === index);
-        });
-    }
-
-    function checkPasscode() {
-        const input = document.getElementById("passcode-input").value;
-        if (input.trim().toLowerCase() === "february 21 2024") {
-            showPage(1);
-        } else {
-            document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
-        }
-    }
-
-    function startTimer() {
-        const startDate = new Date("February 21, 2024").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const difference = now - startDate;
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-            document.getElementById("timer").textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs`;
-        }, 1000);
-    }
-
-    function nextPage(index) {
-        showPage(index + 1);
-    }
-
-    window.checkPasscode = checkPasscode;
-    window.nextPage = nextPage;
-    showPage(0);
-    startTimer();
-});
 
