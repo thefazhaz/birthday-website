@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkPasscode() {
         const input = document.getElementById("passcode-input").value;
         if (input.trim() === "21022024") {
-            document.getElementById("passcode-page").style.display = "none";
-            document.getElementById("timer-page").style.display = "block";
+            currentPage = 1;
+            showPage(currentPage);
             startTimer();
         } else {
             document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
@@ -47,5 +47,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     showPage(0); // Show the first page initially
-});
 
+    // Apply styles
+    document.body.style.fontFamily = "'Bodoni Moda', serif";
+    document.body.style.backgroundColor = "#f8d7da"; // Pastel pink
+    document.body.style.color = "#b03a5b"; // Dark pink
+
+    document.querySelectorAll("h1, h2, h3").forEach(el => {
+        el.style.color = "#b03a5b";
+    });
+
+    document.querySelectorAll("button").forEach(button => {
+        button.style.backgroundColor = "#e57373";
+        button.style.color = "#fff";
+        button.style.border = "none";
+        button.style.padding = "10px 20px";
+        button.style.borderRadius = "5px";
+        button.style.cursor = "pointer";
+    });
+
+    document.querySelectorAll(".heart").forEach(heart => {
+        heart.style.color = "#ff69b4";
+    });
+});
