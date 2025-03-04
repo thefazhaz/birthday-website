@@ -1,28 +1,41 @@
-function checkPassword() {
-    let enteredPassword = document.getElementById("password").value;
-    let correctPassword = "15062023"; // Change this to your actual anniversary date
+document.addEventListener("DOMContentLoaded", function() {
+    const pages = document.querySelectorAll(".page");
+    let currentPage = 0;
 
-    if (enteredPassword === correctPassword) {
-        document.getElementById("login-screen").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-    } else {
-        document.getElementById("error-message").style.display = "block";
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            page.classList.toggle("active", i === index);
+        });
     }
-}
-function updateTimer() {
-    let startDate = new Date("2023-06-15"); // Change this to the exact date you started talking
-    let now = new Date();
-    let difference = now - startDate;
 
-    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    let minutes = Math.floor((difference / (1000 * 60)) % 60);
-    let seconds = Math.floor((difference / 1000) % 60);
+    function checkPasscode() {
+        const input = document.getElementById("passcode-input").value;
+        if (input.trim().toLowerCase() === "february 21 2024") {
+            showPage(1);
+        } else {
+            document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
+        }
+    }
 
-    document.getElementById("timer").innerHTML = 
-        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    function startTimer() {
+        const startDate = new Date("February 21, 2024").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            document.getElementById("timer").textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs`;
+        }, 1000);
+    }
 
-    setTimeout(updateTimer, 1000); // Update every second
-}
+    function nextPage(index) {
+        showPage(index + 1);
+    }
 
-updateTimer();
+    window.checkPasscode = checkPasscode;
+    window.nextPage = nextPage;
+    showPage(0);
+    startTimer();
+});
