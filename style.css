@@ -1,0 +1,20 @@
+.scroll-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.scroll-text {
+    display: inline-block;
+    position: relative;
+    left: 100%;
+    font-size: 20px;
+    color: #ff69b4;
+    animation: rollText 10s linear infinite;
+}
+
+@keyframes rollText {
+    from { left: 100%; }
+    to { left: -100%; }
+}
