@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-screen">
+        <h2>Enter Our Anniversary Date (DDMMYYYY) ❤️</h2>
+        <input type="password" id="password" placeholder="e.g. 15062023">
+        <button onclick="checkPassword()">Enter</button>
+        <p id="error-message" style="color: red; display: none;">Wrong date! Try again.</p>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <h1>🎉 Happy Birthday, Love! 🎂</h1>
+        <p>You're the best thing that ever happened to me ❤️</p>
+        <button onclick="showMessage()">Click for a Surprise 🎁</button>
+        <p id="hiddenMessage" style="display:none;">I love you more than words can say! 💖</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div class="countdown">
+    <h2>We've been talking for:</h2>
+    <p id="timer"></p>
+</div>
+<div class="scroll-container">
+    <p class="scroll-text">Happy Birthday, my love! 💖 I’m so grateful to have you in my life...</p>
+</div>
+<a href="scrapbook.html" class="button">📖 Open Our Scrapbook</a>
+
