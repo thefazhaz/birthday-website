@@ -1,45 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", function () {
+    const pages = document.querySelectorAll(".page");
+    let currentPage = 0;
 
-    <!-- Page 1: Passcode -->
-    <div class="page" id="passcode-page">
-        <h1>Enter Our Anniversary Date (DDMMYYYY) ❤️</h1>
-        <input type="text" id="passcode-input" placeholder="Enter passcode">
-        <button id="enter-btn">Enter</button>
-        <p id="passcode-error" style="color: red;"></p>
-    </div>
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            page.style.display = i === index ? "block" : "none";
+        });
+    }
 
-    <!-- Page 2: Timer -->
-    <div class="page" id="timer-page">
-        <h2>We've been talking for:</h2>
-        <p id="timer"></p>
-        <button onclick="nextPage()">Next</button>
-    </div>
+    function checkPasscode() {
+        const input = document.getElementById("passcode-input").value;
+        if (input.trim() === "21022024") {
+            currentPage = 1;
+            showPage(currentPage);
+            startTimer();
+        } else {
+            document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
+        }
+    }
 
-    <!-- Page 3: Message -->
-    <div class="page" id="message-page">
-        <p>Happy Birthday, my love! 💖 I'm so grateful to have you in my life...</p>
-        <button onclick="nextPage()">Next</button>
-    </div>
+    function startTimer() {
+        const startDate = new Date("February 21, 2024").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const difference = now - startDate;
 
-    <!-- Page 4: Songs -->
-    <div class="page" id="songs-page">
-        <h2>Songs that remind me of you 🎵</h2>
-        <ul>
-            <li>💖 Song 1</li>
-            <li>💖 Song 2</li>
-            <li>💖 Song 3</li>
-        </ul>
-    </div>
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    <script src="script.js"></script>
-</body>
-</html>
+            document.getElementById("timer").textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs`;
+        }, 1000);
+    }
+
+    function nextPage() {
+        currentPage++;
+        if (currentPage < pages.length) {
+            showPage(currentPage);
+        }
+    }
+
+    document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
+    document.querySelectorAll(".next-btn").forEach(button => {
+        button.addEventListener("click", nextPage);
+    });
+
+    showPage(0); // Show the first page initially
+});
 
