@@ -1,63 +1,53 @@
-.scroll-container {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-}
-
-.scroll-text {
-    display: inline-block;
-    position: relative;
-    left: 100%;
-    font-size: 20px;
-    color: #ff69b4;
-    animation: rollText 10s linear infinite;
-}
-
-@keyframes rollText {
-    from { left: 100%; }
-    to { left: -100%; }
-}
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
 
 body {
     font-family: 'Bodoni Moda', serif;
-}
-:root {
-    --main-color: #ff6b81;  /* Pink */
-    --secondary-color: #ffde59; /* Yellow */
-    --background-color: #fff5f5; /* Light Pink */
-    --text-color: #333;
+    background-color: #fdf6f0; /* Soft beige background */
+    color: #5a3e2b; /* Warm brown text */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+.container {
+    max-width: 800px;
+    padding: 20px;
 }
 
 h1, h2 {
-    color: var(--main-color);
+    font-weight: 700;
 }
 
 button {
-    background-color: var(--main-color);
+    background-color: #b28d67; /* Soft brown */
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: var(--secondary-color);
-    color: black;
+    background-color: #8c6848;
 }
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+
+.hidden {
+    display: none;
 }
+
+#timer {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 
 h1, p {
     animation: fadeIn 1.5s ease-in-out;
