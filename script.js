@@ -9,10 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkPasscode() {
-        const input = document.getElementById("passcode-input").value.trim();
-        if (input === "21022024") {
-            document.getElementById("passcode-error").textContent = "";
-            nextPage();
+        const input = document.getElementById("passcode-input").value;
+        if (input.trim() === "21022024") {
+            document.getElementById("passcode-page").style.display = "none";
+            document.getElementById("timer-page").style.display = "block";
+            startTimer();
         } else {
             document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
         }
@@ -37,10 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
         currentPage++;
         if (currentPage < pages.length) {
             showPage(currentPage);
-            if (currentPage === 1) startTimer(); // Start timer on second page
         }
     }
 
-    document.getElementById("enter-btn").addEventListener("click", checkPasscode);
-    showPage(0); // Show only the first page initially
+    document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
+    document.querySelectorAll(".next-btn").forEach(button => {
+        button.addEventListener("click", nextPage);
+    });
+
+    showPage(0); // Show the first page initially
 });
+
