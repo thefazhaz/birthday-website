@@ -34,12 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1000);
     }
 
-    function nextPage() {
-        currentPage++;
-        if (currentPage < pages.length) {
-            showPage(currentPage);
-        }
+   function nextPage() {
+    currentPage++;
+    if (currentPage < pages.length) {
+        showPage(currentPage);
     }
+    
+    // Hide "Next" button if on last page
+    if (currentPage === pages.length - 1) {
+        document.querySelector(".next-btn").style.display = "none";
+    }
+}
+
 
     document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
     document.querySelectorAll(".next-btn").forEach(button => {
