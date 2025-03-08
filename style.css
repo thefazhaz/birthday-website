@@ -1,47 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap');
 
 body {
+    background-color: #FFD6E0;
     font-family: 'Bodoni Moda', serif;
+    color: #A02060;
     text-align: center;
-    background-color: #FFD1DC; /* Light Pink */
-    color: #A30052; /* Dark Pink */
-    margin: 0;
-    padding: 0;
+    padding: 50px;
 }
 
-h1 {
-    font-size: 2.5em;
-    font-weight: bold;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 button {
-    background-color: #FF69B4; /* Hot Pink */
+    background-color: #FFB6C1;
+    color: #A02060;
     border: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    font-family: 'Bodoni Moda', serif;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 15px;
     cursor: pointer;
-    color: white;
-    border-radius: 10px;
-    margin: 10px;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #FF1493; /* Deeper Pink */
-}
-
-.hidden {
-    display: none;
-}
-
-.vinyl-container {
-    margin-top: 20px;
-}
-
-.vinyl {
-    background-color: #FF69B4;
-    color: white;
-    padding: 15px;
-    border-radius: 50px;
-    font-size: 1.2em;
+    background-color: #FF99AA;
 }
