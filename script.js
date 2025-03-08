@@ -1,7 +1,7 @@
 // Check Passcode
 function checkPasscode() {
     let passcode = document.getElementById('passcodeInput').value;
-    if (passcode === "21022024") {  // Passcode is now 21022024
+    if (passcode === "21022024") {
         nextPage('timerPage');
         startTimer();
     } else {
@@ -19,7 +19,7 @@ function nextPage(pageId) {
 
 // Timer Function
 function startTimer() {
-    let startDate = new Date("2024-02-21T00:00:00"); // Timer starts from February 21, 2024
+    let startDate = new Date("2024-02-21T00:00:00");
     setInterval(() => {
         let now = new Date();
         let difference = now - startDate;
