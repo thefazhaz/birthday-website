@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
+    <title>Happy Birthday!</title>
     <link rel="stylesheet" href="style.css">
-<head>
+</head>
 <body>
-    <!-- Passcode Page -->
-    <div class="page" id="page-1">
+    <div class="page" id="passcode-page">
         <h1>Enter Passcode</h1>
-        <input type="text" id="passcode-input">
+        <input type="password" id="passcode-input">
         <button id="passcode-btn">Enter</button>
-        <p id="passcode-error" style="color: red;"></p>
+        <p id="passcode-error" class="error"></p>
     </div>
 
-    <!-- Timer Page -->
-    <div class="page" id="page-2">
-        <h1>We've been together for:</h1>
+    <div class="page" id="timer-page">
+        <h1>Time Since We Got Together 💖</h1>
         <p id="timer"></p>
         <button class="next-btn">Next</button>
     </div>
 
-    <!-- Love Letter Page -->
-    <div class="page" id="page-3">
+    <div class="page" id="message-page">
         <h1>Click the Envelope 💌</h1>
-        <div id="envelope" class="envelope"></div>
-        <div id="love-letter" class="letter">I love you! ❤️</div>
-        <button class="next-btn">Next</button>
+        <div id="envelope"></div>
+        <div id="love-letter">
+            <p>I love you! ❤️</p>
+            <button class="next-btn">Next</button>
+        </div>
     </div>
 
-    <!-- Vinyl Player Page -->
-    <div class="page" id="page-4">
+    <div class="page" id="vinyl-page">
         <h1>Our Songs 🎶</h1>
         <div id="vinyl-container"></div>
-        <button id="last-next-btn">Next</button>
+        <button id="last-next-btn" class="next-btn">Next</button>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
