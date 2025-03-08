@@ -1,42 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
-    calculateTimeTogether();
-});
-
-function openMessage() {
-    document.getElementById("message").classList.remove("hidden");
-}
-
-function checkPassword() {
-    let passwordInput = document.getElementById("password").value;
-    let correctPassword = "21022024"; // 21 Feb 2024 in DDMMYYYY
-
-    if (passwordInput === correctPassword) {
-        alert("Correct! Welcome, my love! 💖");
+function checkPasscode() {
+    const input = document.getElementById('passcodeInput').value;
+    if (input === "21022024") { 
+        window.location.href = "timer.html";
     } else {
-        alert("Oops! Try again! 💔");
+        alert("Wrong passcode! Try again 💕");
     }
 }
 
-    updateTimeTogether();
-    setInterval(updateTimeTogether, 1000); // Update every second
-});
-
-function updateTimeTogether() {
-    let startDate = new Date(2024, 1, 21); // 21 Feb 2024 (Months are 0-based, so 1 = February)
-    let now = new Date();
-    
-    let difference = now - startDate;
-    
-    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    let minutes = Math.floor((difference / (1000 * 60)) % 60);
-    let seconds = Math.floor((difference / 1000) % 60);
-    
-    document.getElementById("timeTogether").innerHTML = 
-        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds together 💕`;
+function nextPage(page) {
+    window.location.href = page;
 }
 
+function startTimer() {
+    const startDate = new Date("2024-02-21T00:00:00").getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = now - startDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById("timer").innerHTML = `${days} days ${hours} hrs ${minutes} min ${seconds} sec 💕`;
+    }, 1000);
+}
 
-function togglePlay(songNumber) {
-    alert(`Playing song ${songNumber} 🎵`);
+function playSong(songId) {
+    document.getElementById(songId).play();
 }
