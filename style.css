@@ -1,102 +1,47 @@
-/* Import Bodoni Moda font */
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
-
-/* General Styles */
 body {
-    font-family: 'Bodoni Moda', serif;
-    background-color: #f8d7da; /* Pastel pink */
-    color: #b03a5b; /* Dark pink */
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-h1, h2, h3 {
+    font-family: "Bodoni Moda", serif;
+    background-color: #f8d7da;
     color: #b03a5b;
+    text-align: center;
 }
 
-button {
-    background-color: #e57373;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.heart {
-    color: #ff69b4;
-}
-
-/* Page Styling */
+/* Hide all pages except the first */
 .page {
     display: none;
-    width: 80%;
-    max-width: 600px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+/* Envelope Style */
+.envelope {
+    width: 100px;
+    height: 80px;
+    background: #ff69b4;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.letter {
+    display: none;
+    color: #b03a5b;
+    font-size: 20px;
+}
+
+/* Vinyl Record */
+.vinyl-wrapper {
+    text-align: center;
     margin: 20px auto;
 }
 
-document.querySelectorAll(".vinyl").forEach(vinyl => {
-    vinyl.style.width = "150px";
-    vinyl.style.height = "150px";
-    vinyl.style.borderRadius = "50%";
-    vinyl.style.backgroundColor = "black";
-    vinyl.style.border = "5px solid #ff69b4";
-    vinyl.style.display = "inline-block";
-    vinyl.style.position = "relative";
-    vinyl.style.animation = "spin 5s linear infinite";
-});
-
-// Add spinning animation to the document
-const style = document.createElement("style");
-style.innerHTML = `
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    .vinyl {
-        animation: spin 5s linear infinite;
-    }
-`;
-document.head.appendChild(style);
-
-#love-letter-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.vinyl {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: black;
+    border: 5px solid #ff69b4;
+    animation: spin 5s linear infinite;
 }
 
-#envelope {
-    font-size: 4rem; 
-    cursor: pointer;
-    transition: transform 0.5s ease-in-out;
-}
-
-#letter {
-    width: 300px;
-    height: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 18px;
-    color: #b03a5b;
-    position: relative;
-    top: -20px;
-    opacity: 0;
-    transform: scale(0.5);
-    transition: all 0.5s ease-in-out;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
