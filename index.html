@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Special Page</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body onload="startTimer()">
 
     <!-- Passcode Page -->
     <div id="passcodePage">
         <h1>Enter Passcode 💕</h1>
-        <input type="password" id="passcodeInput" placeholder="Hint: It's our anniversary">
+        <input type="text" id="passcodeInput" placeholder="Hint: It's our anniversary">
         <button onclick="checkPasscode()">Submit</button>
     </div>
 
@@ -30,7 +31,7 @@
 
     <!-- Songs Page -->
     <div id="songsPage" style="display: none;">
-        <h1>Your Songs 🎶</h1>
+        <h1>Songs That Remind Me of You 🎶</h1>
         <button onclick="playSong('song1')">💿 Play Song 1</button>
         <button onclick="playSong('song2')">💿 Play Song 2</button>
         <button onclick="playSong('song3')">💿 Play Song 3</button>
@@ -38,44 +39,6 @@
         <audio id="song2" src="song2.mp3"></audio>
         <audio id="song3" src="song3.mp3"></audio>
     </div>
-
-    <script>
-        function checkPasscode() {
-            const input = document.getElementById('passcodeInput').value;
-            if (input === "21022024") { 
-                showPage('timerPage');
-            } else {
-                alert("Wrong passcode! Try again 💕");
-            }
-        }
-
-        function showPage(pageId) {
-            document.getElementById("passcodePage").style.display = "none";
-            document.getElementById("timerPage").style.display = "none";
-            document.getElementById("envelopePage").style.display = "none";
-            document.getElementById("songsPage").style.display = "none";
-            document.getElementById(pageId).style.display = "block";
-        }
-
-        function startTimer() {
-            const startDate = new Date("2024-02-21T00:00:00").getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = now - startDate;
-                
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                document.getElementById("timer").innerHTML = `${days} days ${hours} hrs ${minutes} min ${seconds} sec 💕`;
-            }, 1000);
-        }
-
-        function playSong(songId) {
-            document.getElementById(songId).play();
-        }
-    </script>
 
 </body>
 </html>
