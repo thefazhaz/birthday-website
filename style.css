@@ -2,60 +2,44 @@
 
 body {
     font-family: 'Bodoni Moda', serif;
-    background-color: #f8d7da;
-    color: #b03a5b;
     text-align: center;
+    background-color: #FFD1DC; /* Light Pink */
+    color: #A30052; /* Dark Pink */
 }
 
-h1, h2, h3 {
-    color: #b03a5b;
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
 button {
-    background-color: #e57373;
-    color: white;
+    background-color: #FF69B4; /* Hot Pink */
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    font-size: 1.2em;
+    font-family: 'Bodoni Moda', serif;
     cursor: pointer;
-    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
 }
 
 button:hover {
-    background-color: #ff4444;
+    background-color: #FF1493; /* Deeper Pink */
 }
 
-.error {
-    color: red;
-}
-
-.page {
+.hidden {
     display: none;
-    margin-top: 50px;
 }
 
-#envelope {
-    width: 100px;
-    height: 80px;
-    background-color: #ffcccc;
-    display: inline-block;
-    cursor: pointer;
-}
-
-#love-letter {
-    display: none;
+.vinyl-container {
+    margin-top: 20px;
 }
 
 .vinyl {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: black;
-    border: 5px solid #ff69b4;
-    animation: spin 5s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    background-color: #FF69B4;
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    font-size: 1.2em;
 }
