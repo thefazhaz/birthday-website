@@ -30,8 +30,12 @@ function startTimer() {
     }, 1000);
 }
 
+function revealMessage() {
+    document.getElementById("loveMessage").style.display = "block";
+    document.getElementById("toSongsPage").style.display = "block";
+}
+
 function playSong(songId) {
     let song = document.getElementById(songId);
     song.play();
 }
-
