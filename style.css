@@ -1,91 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
 
 body {
     font-family: 'Bodoni Moda', serif;
-    background-color: #FFF0F5;
-    color: #FF69B4;
     text-align: center;
-    margin: 0;
-    padding: 20px;
+    background-color: #FDF6F0;
+    color: #5D3A3A;
 }
 
 h1 {
-    font-family: 'Bodoni Moda', serif;
     font-size: 2.5em;
-    font-weight: 600;
-}
-
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.envelope {
-    width: 100px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.envelope:hover {
-    transform: scale(1.1);
-}
-
-.hidden {
-    display: none;
-}
-
-.password-container {
-    margin-top: 20px;
-}
-
-input {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #FF69B4;
-    font-family: 'Bodoni Moda', serif;
 }
 
 button {
-    padding: 10px;
-    background: #FF69B4;
-    color: white;
+    background-color: #FFB6C1;
     border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 10px 20px;
+    font-size: 1em;
     font-family: 'Bodoni Moda', serif;
+    cursor: pointer;
 }
 
 button:hover {
-    background: #FF1493;
-}
-
-.timer {
-    margin-top: 20px;
-    font-weight: 600;
-}
-
-.vinyl-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.vinyl {
-    text-align: center;
+    background-color: #FF8C94;
 }
 
 .vinyl img {
-    width: 80px;
-    border-radius: 50%;
-    transition: transform 0.3s;
-}
-
-.vinyl img:hover {
-    transform: rotate(10deg);
+    width: 100px;
+    height: 100px;
 }
