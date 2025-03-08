@@ -3,40 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise</title>
+    <title>Birthday Website</title>
     <link rel="stylesheet" href="style.css">
-</head> 
+    <script defer src="script.js"></script>
+</head>
 <body>
-    <!-- Passcode Page -->
-    <section id="passcodePage">
-        <h1>Enter Passcode to Continue</h1>
-        <input type="text" id="passcodeInput" placeholder="Hint: It's our anniversary">
+
+    <div id="page1" class="container">
+        <h2>Enter Passcode</h2>
+        <input type="password" id="passcode">
         <button onclick="checkPasscode()">Submit</button>
-    </section>
+    </div>
 
-    <!-- Timer Page -->
-    <section id="timerPage" class="hidden">
-        <h1>We've been together for...</h1>
+    <div id="page2" class="container hidden">
+        <h2>We've been together for:</h2>
         <p id="timer"></p>
-        <button onclick="nextPage('envelopePage')">Next</button>
-    </section>
+        <button onclick="nextPage(3)">Next</button>
+    </div>
 
-    <!-- Envelope Page -->
-    <section id="envelopePage" class="hidden">
-        <h1>Click the Envelope 💌</h1>
-        <button id="revealButton" onclick="revealMessage()">Reveal Message</button>
-        <p id="loveMessage" class="hidden">Happy Birthday, my love! You mean the world to me. 💖</p>
-        <button id="nextToSongs" class="hidden" onclick="nextPage('songsPage')">Next</button>
-    </section>
+    <div id="page3" class="container hidden">
+        <button onclick="revealMessage()">Click to Reveal Message</button>
+        <p id="message" class="hidden">Happy Birthday, Love! 💖</p>
+        <button id="nextButton" class="hidden" onclick="nextPage(4)">Next</button>
+    </div>
 
-    <!-- Songs Page -->
-    <section id="songsPage" class="hidden">
-        <h1>Songs That Remind Me of You 💕</h1>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4XTgFBxBHN6var1BzAgE1m" width="300" height="80"></iframe>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2kSb3wYSOV996xA2NSmpck" width="300" height="80"></iframe>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5F79ZdjOwGOhUKRHx94sr1" width="300" height="80"></iframe>
-    </section>
+    <div id="page4" class="container hidden">
+        <h2>A Special Note</h2>
+        <p>Your fixed paragraph goes here...</p>
+        <button onclick="nextPage(5)">Next</button>
+    </div>
 
-    <script src="script.js"></script>
+    <div id="page5" class="container hidden">
+        <h2>Our Songs</h2>
+        <ul>
+            <li>Song 1</li>
+            <li>Song 2</li>
+            <li>Song 3</li>
+        </ul>
+        <button onclick="nextPage(6)">Next</button>
+    </div>
+
+    <div id="page6" class="container hidden">
+        <h2>Vinyl Player</h2>
+        <audio controls>
+            <source src="your-song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
 </body>
 </html>
