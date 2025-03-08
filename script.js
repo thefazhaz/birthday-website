@@ -76,3 +76,17 @@ document.addEventListener("DOMContentLoaded", function () {
         heart.style.color = "#ff69b4";
     });
 });
+function openEnvelope() {
+    let envelope = document.getElementById("envelope");
+    let letter = document.getElementById("letter");
+
+    // Change envelope to an open state (can modify emoji if needed)
+    envelope.innerHTML = "📩";  
+    envelope.style.transform = "translateY(-20px) scale(1.2)";
+
+    // Show letter with animation
+    setTimeout(() => {
+        letter.style.opacity = "1";
+        letter.style.transform = "scale(1)";
+    }, 500);
+}
