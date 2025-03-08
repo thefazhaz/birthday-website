@@ -48,19 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showPage(0);
 
-    // 💖 Envelope Animation for Page 3 💌
+    // Love Letter Animation
     const envelope = document.getElementById("envelope");
     const loveLetter = document.getElementById("love-letter");
 
     if (envelope && loveLetter) {
-        loveLetter.style.display = "none";
         envelope.addEventListener("click", function () {
-            envelope.style.display = "none"; // Hide envelope
-            loveLetter.style.display = "block"; // Show love letter
+            envelope.style.display = "none";
+            loveLetter.style.display = "block";
         });
     }
 
-    // 🎵 Vinyl Player for Last Page
+    // Vinyl Player
     const songs = [
         { title: "Song 1", link: "https://youtu.be/-2RAq5o5pwc?si=NVCzWvxwoUjKMTRO" },
         { title: "Song 2", link: "https://youtu.be/_QGIzmtIr3E?si=xhfcjyEh-OuQohd6" },
@@ -77,24 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a href="${song.link}" target="_blank">Play Song</a>
             </div>
         `).join("");
-
-        document.querySelectorAll(".vinyl").forEach(vinyl => {
-            vinyl.style.animation = "spin 5s linear infinite";
-        });
     }
 
-    // ❌ Remove "Next" Button on Last Page
+    // Remove "Next" Button on Last Page
     const lastNextButton = document.getElementById("last-next-btn");
     if (lastNextButton) lastNextButton.style.display = "none";
-
-    // 🔄 Add Spinning Animation for Vinyls
-    const style = document.createElement("style");
-    style.innerHTML = `
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    `;
-    document.head.appendChild(style);
 });
-
