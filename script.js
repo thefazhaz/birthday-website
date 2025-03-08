@@ -48,41 +48,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showPage(0);
 
-    // Apply styles
-    document.body.style.fontFamily = "'Bodoni Moda', serif";
-    document.body.style.backgroundColor = "#f8d7da";
-    document.body.style.color = "#b03a5b";
-    document.body.style.textAlign = "center";
-
-    document.querySelectorAll("h1, h2, h3").forEach(el => {
-        el.style.color = "#b03a5b";
-    });
-
-    document.querySelectorAll("button").forEach(button => {
-        button.style.backgroundColor = "#e57373";
-        button.style.color = "#fff";
-        button.style.border = "none";
-        button.style.padding = "10px 20px";
-        button.style.borderRadius = "5px";
-        button.style.cursor = "pointer";
-    });
-
-    document.querySelectorAll(".heart").forEach(heart => {
-        heart.style.color = "#ff69b4";
-    });
-
-    // Love Letter Envelope Animation (Only for Page 3)
+    // 💖 Envelope Animation for Page 3 💌
     const envelope = document.getElementById("envelope");
     const loveLetter = document.getElementById("love-letter");
+
     if (envelope && loveLetter) {
         loveLetter.style.display = "none";
         envelope.addEventListener("click", function () {
-            this.style.display = "none";
-            loveLetter.style.display = "block";
+            envelope.style.display = "none"; // Hide envelope
+            loveLetter.style.display = "block"; // Show love letter
         });
     }
 
-    // Vinyl player for the last page
+    // 🎵 Vinyl Player for Last Page
     const songs = [
         { title: "Song 1", link: "https://youtu.be/-2RAq5o5pwc?si=NVCzWvxwoUjKMTRO" },
         { title: "Song 2", link: "https://youtu.be/_QGIzmtIr3E?si=xhfcjyEh-OuQohd6" },
@@ -91,35 +69,25 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     const vinylContainer = document.getElementById("vinyl-container");
-    vinylContainer.innerHTML = songs.map((song, index) => `
-        <div class="vinyl-wrapper">
-            <div class="vinyl" id="vinyl${index}"></div>
-            <p>${song.title}</p>
-            <a href="${song.link}" target="_blank">Play Song</a>
-        </div>
-    `).join("\n");
+    if (vinylContainer) {
+        vinylContainer.innerHTML = songs.map((song, index) => `
+            <div class="vinyl-wrapper">
+                <div class="vinyl" id="vinyl${index}"></div>
+                <p>${song.title}</p>
+                <a href="${song.link}" target="_blank">Play Song</a>
+            </div>
+        `).join("");
 
-    document.querySelectorAll(".vinyl-wrapper").forEach(wrapper => {
-        wrapper.style.textAlign = "center";
-        wrapper.style.margin = "20px auto";
-    });
-
-    document.querySelectorAll(".vinyl").forEach(vinyl => {
-        vinyl.style.width = "150px";
-        vinyl.style.height = "150px";
-        vinyl.style.borderRadius = "50%";
-        vinyl.style.backgroundColor = "black";
-        vinyl.style.border = "5px solid #ff69b4";
-        vinyl.style.animation = "spin 5s linear infinite";
-    });
-
-    // Remove the next button on the last page
-    const lastNextButton = document.querySelector("#last-next-btn");
-    if (lastNextButton) {
-        lastNextButton.style.display = "none";
+        document.querySelectorAll(".vinyl").forEach(vinyl => {
+            vinyl.style.animation = "spin 5s linear infinite";
+        });
     }
 
-    // Add spinning animation
+    // ❌ Remove "Next" Button on Last Page
+    const lastNextButton = document.getElementById("last-next-btn");
+    if (lastNextButton) lastNextButton.style.display = "none";
+
+    // 🔄 Add Spinning Animation for Vinyls
     const style = document.createElement("style");
     style.innerHTML = `
         @keyframes spin {
@@ -129,3 +97,4 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.head.appendChild(style);
 });
+
