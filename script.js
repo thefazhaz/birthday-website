@@ -2,13 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
     calculateTimeTogether();
 });
 
+// 🎁 Opens the birthday message
 function openMessage() {
     document.getElementById("message").classList.remove("hidden");
 }
 
+// 🔐 Checks the passcode
 function checkPassword() {
     let passwordInput = document.getElementById("password").value;
-    let correctPassword = "21022024"; // Your anniversary in DDMMYYYY format
+    let correctPassword = "21022024"; // 21st Feb 2024 in DDMMYYYY
 
     if (passwordInput === correctPassword) {
         alert("Correct! Welcome, my love! 💖");
@@ -17,22 +19,18 @@ function checkPassword() {
     }
 }
 
+// ⏳ Calculates how long you've been together
 function calculateTimeTogether() {
-    let startDate = "21022024"; // Your anniversary date in DDMMYYYY format
-    let formattedDate = startDate.substring(4, 8) + "-" + startDate.substring(2, 4) + "-" + startDate.substring(0, 2);
-    
-    let start = new Date(formattedDate);
+    let startDate = new Date(2024, 1, 21); // 21 Feb 2024
     let now = new Date();
     
-    if (!isNaN(start.getTime())) {
-        let difference = now - start;
-        let daysTogether = Math.floor(difference / (1000 * 60 * 60 * 24));
-        document.getElementById("timeTogether").innerHTML = `${daysTogether} days together 💕`;
-    } else {
-        document.getElementById("timeTogether").innerHTML = "Error in date calculation!";
-    }
+    let difference = now - startDate;
+    let daysTogether = Math.floor(difference / (1000 * 60 * 60 * 24));
+    
+    document.getElementById("timeTogether").innerHTML = `${daysTogether} days together 💕`;
 }
 
+// 🎶 Plays songs when you click the vinyl
 function togglePlay(songNumber) {
     alert(`Playing song ${songNumber} 🎵`);
 }
