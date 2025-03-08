@@ -3,39 +3,36 @@ function openMessage() {
 }
 
 function checkPassword() {
-    const password = document.getElementById("password").value;
-    if (password === "your_anniversary_date") {
-        alert("Correct! Welcome, my love!");
+    let password = document.getElementById("password").value;
+    if (password === "YOUR_ANNIVERSARY_DATE") {
+        alert("Access granted! ❤️");
     } else {
-        alert("Oops! Try again.");
+        alert("Wrong passcode! Try again.");
     }
 }
 
+// Timer Function
 function updateTimer() {
-    const startDate = new Date("YYYY-MM-DD"); // Replace with your date
-    const now = new Date();
-    const diff = now - startDate;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("timeTogether").innerText = days + " days together!";
+    let startDate = new Date("YYYY-MM-DD"); // Replace with your anniversary date
+    let now = new Date();
+    let difference = now - startDate;
+    
+    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    document.getElementById("timeTogether").innerText = `${days} days together 💕`;
 }
-
 setInterval(updateTimer, 1000);
 
-const audioPlayers = [
-    new Audio("song1.mp3"),
-    new Audio("song2.mp3"),
-    new Audio("song3.mp3")
-];
+// Vinyl Player Functionality
+let playing = {};
 
 function togglePlay(index) {
-    const vinyl = document.getElementById("vinyl" + index);
-    if (audioPlayers[index - 1].paused) {
-        audioPlayers.forEach(audio => audio.pause());
-        audioPlayers[index - 1].play();
-        document.querySelectorAll(".vinyl").forEach(v => v.classList.remove("playing"));
-        vinyl.classList.add("playing");
+    let vinyl = document.getElementById(`cover${index}`);
+    
+    if (!playing[index]) {
+        vinyl.classList.add("spinning");
+        playing[index] = true;
     } else {
-        audioPlayers[index - 1].pause();
-        vinyl.classList.remove("playing");
+        vinyl.classList.remove("spinning");
+        playing[index] = false;
     }
 }
