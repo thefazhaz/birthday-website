@@ -34,30 +34,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1000);
     }
 
-   function nextPage() {
-    currentPage++;
-    if (currentPage < pages.length) {
-        showPage(currentPage);
+    function nextPage() {
+        currentPage++;
+        if (currentPage < pages.length) {
+            showPage(currentPage);
+        }
     }
-    
-    // Hide "Next" button if on last page
-    if (currentPage === pages.length - 1) {
-        document.querySelector(".next-btn").style.display = "none";
-    }
-}
-
 
     document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
     document.querySelectorAll(".next-btn").forEach(button => {
         button.addEventListener("click", nextPage);
     });
 
-    showPage(0); // Show the first page initially
+    showPage(0);
 
     // Apply styles
     document.body.style.fontFamily = "'Bodoni Moda', serif";
-    document.body.style.backgroundColor = "#f8d7da"; // Pastel pink
-    document.body.style.color = "#b03a5b"; // Dark pink
+    document.body.style.backgroundColor = "#f8d7da";
+    document.body.style.color = "#b03a5b";
+    document.body.style.textAlign = "center";
 
     document.querySelectorAll("h1, h2, h3").forEach(el => {
         el.style.color = "#b03a5b";
@@ -75,18 +70,62 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".heart").forEach(heart => {
         heart.style.color = "#ff69b4";
     });
+
+    // Love Letter Envelope Animation (Only for Page 3)
+    const envelope = document.getElementById("envelope");
+    const loveLetter = document.getElementById("love-letter");
+    if (envelope && loveLetter) {
+        loveLetter.style.display = "none";
+        envelope.addEventListener("click", function () {
+            this.style.display = "none";
+            loveLetter.style.display = "block";
+        });
+    }
+
+    // Vinyl player for the last page
+    const songs = [
+        { title: "Song 1", link: "https://youtu.be/-2RAq5o5pwc?si=NVCzWvxwoUjKMTRO" },
+        { title: "Song 2", link: "https://youtu.be/_QGIzmtIr3E?si=xhfcjyEh-OuQohd6" },
+        { title: "Song 3", link: "https://youtu.be/7z3YeFqd7xQ?si=DfWtwsXYEEarjJyL" },
+        { title: "Song 4", link: "https://youtu.be/MYvjW3zdCws?si=VVF-PL8dikoTlJdj" }
+    ];
+
+    const vinylContainer = document.getElementById("vinyl-container");
+    vinylContainer.innerHTML = songs.map((song, index) => `
+        <div class="vinyl-wrapper">
+            <div class="vinyl" id="vinyl${index}"></div>
+            <p>${song.title}</p>
+            <a href="${song.link}" target="_blank">Play Song</a>
+        </div>
+    `).join("\n");
+
+    document.querySelectorAll(".vinyl-wrapper").forEach(wrapper => {
+        wrapper.style.textAlign = "center";
+        wrapper.style.margin = "20px auto";
+    });
+
+    document.querySelectorAll(".vinyl").forEach(vinyl => {
+        vinyl.style.width = "150px";
+        vinyl.style.height = "150px";
+        vinyl.style.borderRadius = "50%";
+        vinyl.style.backgroundColor = "black";
+        vinyl.style.border = "5px solid #ff69b4";
+        vinyl.style.animation = "spin 5s linear infinite";
+    });
+
+    // Remove the next button on the last page
+    const lastNextButton = document.querySelector("#last-next-btn");
+    if (lastNextButton) {
+        lastNextButton.style.display = "none";
+    }
+
+    // Add spinning animation
+    const style = document.createElement("style");
+    style.innerHTML = `
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
 });
-function openEnvelope() {
-    let envelope = document.getElementById("envelope");
-    let letter = document.getElementById("letter");
-
-    // Change envelope to an open state (can modify emoji if needed)
-    envelope.innerHTML = "📩";  
-    envelope.style.transform = "translateY(-20px) scale(1.2)";
-
-    // Show letter with animation
-    setTimeout(() => {
-        letter.style.opacity = "1";
-        letter.style.transform = "scale(1)";
-    }, 500);
-}
