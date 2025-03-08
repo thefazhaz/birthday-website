@@ -1,44 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-    updateTimer();
-    setInterval(updateTimer, 1000);
-});
-
-function checkPassword() {
-    const password = document.getElementById("password").value;
-    if (password === "210212024") {
-        nextPage(2);
+// Check Passcode
+function checkPasscode() {
+    let passcode = document.getElementById('passcodeInput').value;
+    if (passcode === "21022024") {  // Passcode is now 21022024
+        nextPage('timerPage');
+        startTimer();
     } else {
         alert("Wrong passcode! Try again.");
     }
 }
 
-function updateTimer() {
-    const startDate = new Date("February 21, 2024 00:00:00").getTime();
-    const now = new Date().getTime();
-    const diff = now - startDate;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("timeTogether").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+// Navigate Pages
+function nextPage(pageId) {
+    document.querySelectorAll("section").forEach(section => {
+        section.classList.add("hidden");
+    });
+    document.getElementById(pageId).classList.remove("hidden");
 }
 
-function openMessage() {
-    document.getElementById("message").classList.remove("hidden");
+// Timer Function
+function startTimer() {
+    let startDate = new Date("2024-02-21T00:00:00"); // Timer starts from February 21, 2024
+    setInterval(() => {
+        let now = new Date();
+        let difference = now - startDate;
+        let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        let minutes = Math.floor((difference / (1000 * 60)) % 60);
+        let seconds = Math.floor((difference / 1000) % 60);
+        document.getElementById('timer').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
 }
 
-function nextPage(pageNumber) {
-    document.querySelectorAll(".page").forEach(page => page.classList.add("hidden"));
-    document.getElementById(`page${pageNumber}`).classList.remove("hidden");
-}
-
-function openSpotify(songNumber) {
-    const songLinks = [
-        "https://open.spotify.com/track/4XTgFBxBHN6var1BzAgE1m?si=f5f47696be07408f",
-        "https://open.spotify.com/track/2kSb3wYSOV996xA2NSmpck?si=cc8f5d93c8cc45ee",
-        "https://open.spotify.com/track/5F79ZdjOwGOhUKRHx94sr1?si=cda416dcbee04662"
-    ];
-    window.open(songLinks[songNumber - 1], "_blank");
+// Envelope Reveal
+function revealMessage() {
+    document.getElementById('loveMessage').classList.remove("hidden");
+    document.getElementById('nextToSongs').classList.remove("hidden");
+    document.getElementById('revealButton').style.display = "none";
 }
