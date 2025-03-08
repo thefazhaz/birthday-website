@@ -48,18 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showPage(0);
 
-    // Love Letter Animation
+    // Love Letter Envelope Animation
     const envelope = document.getElementById("envelope");
     const loveLetter = document.getElementById("love-letter");
 
-    if (envelope && loveLetter) {
+    if (envelope) {
         envelope.addEventListener("click", function () {
             envelope.style.display = "none";
             loveLetter.style.display = "block";
         });
     }
 
-    // Vinyl Player
+    // Vinyl player for songs
     const songs = [
         { title: "Song 1", link: "https://youtu.be/-2RAq5o5pwc?si=NVCzWvxwoUjKMTRO" },
         { title: "Song 2", link: "https://youtu.be/_QGIzmtIr3E?si=xhfcjyEh-OuQohd6" },
@@ -68,17 +68,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     const vinylContainer = document.getElementById("vinyl-container");
-    if (vinylContainer) {
-        vinylContainer.innerHTML = songs.map((song, index) => `
-            <div class="vinyl-wrapper">
-                <div class="vinyl" id="vinyl${index}"></div>
-                <p>${song.title}</p>
-                <a href="${song.link}" target="_blank">Play Song</a>
-            </div>
-        `).join("");
-    }
+    vinylContainer.innerHTML = songs.map((song, index) => `
+        <div class="vinyl-wrapper">
+            <div class="vinyl" id="vinyl${index}"></div>
+            <p>${song.title}</p>
+            <a href="${song.link}" target="_blank">Play Song</a>
+        </div>
+    `).join("\n");
 
-    // Remove "Next" Button on Last Page
-    const lastNextButton = document.getElementById("last-next-btn");
-    if (lastNextButton) lastNextButton.style.display = "none";
+    document.querySelectorAll(".vinyl-wrapper").forEach(wrapper => {
+        wrapper.style.textAlign = "center";
+        wrapper.style.margin = "20px auto";
+    });
+
+    // Hide the next button on the last page
+    document.getElementById("last-next-btn").style.display = "none";
 });
