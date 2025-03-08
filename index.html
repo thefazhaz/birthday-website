@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Special Page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>Our Love Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
-<body onload="startTimer()">
+<body>
+    <div class="container">
+        <!-- PAGE 1: PASSWORD -->
+        <div id="page1">
+            <h1>Enter Passcode to Continue</h1>
+            <input type="text" id="password" placeholder="Hint: It's our anniversary date">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
 
-    <!-- Passcode Page -->
-    <div id="passcodePage">
-        <h1>Enter Passcode 🩷</h1>
-        <input type="text" id="passcodeInput" placeholder="Hint: It's our anniversary">
-        <button onclick="checkPasscode()">Submit</button>
+        <!-- PAGE 2: TIMER -->
+        <div id="page2" class="hidden">
+            <h1>We've been together for...</h1>
+            <p id="timeTogether"></p>
+            <button onclick="showPage(3)">Next</button>
+        </div>
+
+        <!-- PAGE 3: ENVELOPE MESSAGE -->
+        <div id="page3" class="hidden">
+            <h1>Click the Envelope 💌</h1>
+            <img src="envelope.png" id="envelope" class="envelope" onclick="openMessage()">
+            <div id="message" class="hidden">
+                <p>Happy Birthday, my love! You mean the world to me. 💖</p>
+                <button onclick="showPage(4)">Next</button>
+            </div>
+        </div>
+
+        <!-- PAGE 4: SONGS -->
+        <div id="page4" class="hidden">
+            <h1>Songs That Remind Me of You 💕</h1>
+            <div class="spotify-container">
+                <iframe src="https://open.spotify.com/embed/track/4XTgFBxBHN6var1BzAgE1m" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://open.spotify.com/embed/track/2kSb3wYSOV996xA2NSmpck" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://open.spotify.com/embed/track/5F79ZdjOwGOhUKRHx94sr1" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
     </div>
-
-    <!-- Timer Page -->
-    <div id="timerPage" style="display: none;">
-        <h1>We've been together since...</h1>
-        <p id="timer"></p>
-        <button onclick="showPage('envelopePage')">Next 💌</button>
-    </div>
-
-    <!-- Envelope Page -->
-    <div id="envelopePage" style="display: none;">
-        <h1>♡ Click to Reveal ♡</h1>
-        <button onclick="revealMessage()">💌 Open</button>
-        <p id="loveMessage" style="display: none;">  
-          i am eternally grateful for you, us, and the universe for bringing us together. 
-all i want is to be with you for the rest of our lives. 💖  
-        </p>
-        <button id="toSongsPage" style="display: none;" onclick="showPage('songsPage')">Next 🎶</button>
-    </div>
-
-    <!-- Songs Page -->
-    <div id="songsPage" style="display: none;">
-        <h1>🌸 Songs That Remind Me of You 🌸</h1>
-        <button onclick="playSong('song1')">💿</button>
-        <button onclick="playSong('song2')">💿</button>
-        <button onclick="playSong('song3')">💿</button>
-        <audio id="song1" src="song1.mp3"></audio>
-        <audio id="song2" src="song2.mp3"></audio>
-        <audio id="song3" src="song3.mp3"></audio>
-    </div>
-
 </body>
 </html>
