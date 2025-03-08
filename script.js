@@ -3,6 +3,7 @@ function checkPasscode() {
     let passcode = document.getElementById('passcodeInput').value;
     if (passcode === "yourPasscode") {  // Change this to the actual passcode
         nextPage('timerPage');
+        startTimer();
     } else {
         alert("Wrong passcode! Try again.");
     }
@@ -34,4 +35,5 @@ function startTimer() {
 function revealMessage() {
     document.getElementById('loveMessage').classList.remove("hidden");
     document.getElementById('nextToSongs').classList.remove("hidden");
+    document.getElementById('revealButton').style.display = "none";
 }
