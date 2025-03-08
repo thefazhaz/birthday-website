@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
+
 body {
     font-family: 'Bodoni Moda', serif;
     background-color: #f8d7da;
@@ -16,10 +18,32 @@ button {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.heart {
-    color: #ff69b4;
+button:hover {
+    background-color: #ff4444;
+}
+
+.error {
+    color: red;
+}
+
+.page {
+    display: none;
+    margin-top: 50px;
+}
+
+#envelope {
+    width: 100px;
+    height: 80px;
+    background-color: #ffcccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#love-letter {
+    display: none;
 }
 
 .vinyl {
