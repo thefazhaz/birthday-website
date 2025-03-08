@@ -33,11 +33,6 @@ input {
     display: none;
 }
 
-img {
-    width: 100px;
-    cursor: pointer;
-}
-
 .song {
     margin: 20px;
 }
