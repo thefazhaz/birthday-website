@@ -46,23 +46,27 @@ button {
     margin: 20px auto;
 }
 
-/* Vinyl Player */
-.vinyl-wrapper {
-    text-align: center;
-    margin: 20px auto;
-}
+document.querySelectorAll(".vinyl").forEach(vinyl => {
+    vinyl.style.width = "150px";
+    vinyl.style.height = "150px";
+    vinyl.style.borderRadius = "50%";
+    vinyl.style.backgroundColor = "black";
+    vinyl.style.border = "5px solid #ff69b4";
+    vinyl.style.display = "inline-block";
+    vinyl.style.position = "relative";
+    vinyl.style.animation = "spin 5s linear infinite";
+});
 
-.vinyl {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: black;
-    border: 5px solid #ff69b4;
-    animation: spin 5s linear infinite;
-}
+// Add spinning animation to the document
+const style = document.createElement("style");
+style.innerHTML = `
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .vinyl {
+        animation: spin 5s linear infinite;
+    }
+`;
+document.head.appendChild(style);
 
-/* Spinning Animation */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
