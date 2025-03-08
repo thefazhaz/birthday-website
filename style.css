@@ -5,6 +5,20 @@ body {
     text-align: center;
 }
 
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.5em;
+}
 button {
     background-color: #ffb6c1; /* Pastel pink */
     color: #ffffff;
