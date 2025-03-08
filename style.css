@@ -2,29 +2,60 @@
 
 body {
     font-family: 'Bodoni Moda', serif;
+    background-color: #f8d7da;
+    color: #b03a5b;
     text-align: center;
-    background-color: #FDF6F0;
-    color: #5D3A3A;
 }
 
-h1 {
-    font-size: 2.5em;
+h1, h2, h3 {
+    color: #b03a5b;
 }
 
 button {
-    background-color: #FFB6C1;
+    background-color: #e57373;
+    color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 1em;
-    font-family: 'Bodoni Moda', serif;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #FF8C94;
+    background-color: #ff4444;
 }
 
-.vinyl img {
+.error {
+    color: red;
+}
+
+.page {
+    display: none;
+    margin-top: 50px;
+}
+
+#envelope {
     width: 100px;
-    height: 100px;
+    height: 80px;
+    background-color: #ffcccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#love-letter {
+    display: none;
+}
+
+.vinyl {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: black;
+    border: 5px solid #ff69b4;
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
