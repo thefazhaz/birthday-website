@@ -4,131 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Bodoni Moda', serif;
-            background-color: #f8d7da; /* Pastel pink */
-            color: #b03a5b; /* Dark pink */
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .page {
-            display: none;
-            padding: 20px;
-        }
-        .visible {
-            display: block;
-        }
-        input, button {
-            font-size: 18px;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: 2px solid #b03a5b;
-        }
-        button {
-            background-color: #e57373;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .heart {
-            color: #ff69b4;
-            font-size: 24px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Page 1: Passcode Entry -->
-    <div class="page visible" id="page-1">
-        <h1>Enter the Passcode 💖</h1>
-        <input type="text" id="passcode-input" placeholder="Enter Passcode (DDMMYYYY)">
-        <button id="passcode-btn">Submit</button>
+    <!-- Passcode Page -->
+    <div class="page" id="page-1">
+        <h1>Enter Passcode</h1>
+        <input type="text" id="passcode-input">
+        <button id="passcode-btn">Enter</button>
         <p id="passcode-error" style="color: red;"></p>
     </div>
 
-    <!-- Page 2: Timer -->
+    <!-- Timer Page -->
     <div class="page" id="page-2">
-        <h1>We've Been Together For:</h1>
-        <h2 id="timer">Loading...</h2>
+        <h1>We've been together for:</h1>
+        <p id="timer"></p>
         <button class="next-btn">Next</button>
     </div>
 
-    <!-- Page 3: Birthday Message -->
-    <div id="love-letter-container">
-    <div id="envelope" onclick="openEnvelope()">💌</div>
-    <div id="letter">
-        <p>My Love,</p>
-        <p>[Your note here]</p>
-        <p>Forever yours, [Your Name]</p>
+    <!-- Love Letter Page -->
+    <div class="page" id="page-3">
+        <h1>Click the Envelope 💌</h1>
+        <div id="envelope" class="envelope"></div>
+        <div id="love-letter" class="letter">I love you! ❤️</div>
+        <button class="next-btn">Next</button>
     </div>
-</div>
 
-
-    <!-- Page 4: Songs List -->
+    <!-- Vinyl Player Page -->
     <div class="page" id="page-4">
-        <h1>Our Special Songs 🎶</h1>
-        <ul>
-            <li>💖 Song 1</li>
-            <li>💖 Song 2</li>
-            <li>💖 Song 3</li>
-        </ul>
-        <button class="next-btn">Next</button>
+        <h1>Our Songs 🎶</h1>
+        <div id="vinyl-container"></div>
+        <button id="last-next-btn">Next</button>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const pages = document.querySelectorAll(".page");
-            let currentPage = 0;
-
-            function showPage(index) {
-                pages.forEach((page, i) => {
-                    page.style.display = i === index ? "block" : "none";
-                });
-            }
-
-            function checkPasscode() {
-                const input = document.getElementById("passcode-input").value;
-                if (input.trim() === "21022024") {
-                    currentPage = 1;
-                    showPage(currentPage);
-                    startTimer();
-                } else {
-                    document.getElementById("passcode-error").textContent = "Incorrect passcode. Try again.";
-                }
-            }
-
-            function startTimer() {
-                const startDate = new Date("February 21, 2024").getTime();
-                setInterval(() => {
-                    const now = new Date().getTime();
-                    const difference = now - startDate;
-                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-                    document.getElementById("timer").textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs`;
-                }, 1000);
-            }
-
-            function nextPage() {
-                currentPage++;
-                if (currentPage < pages.length) {
-                    showPage(currentPage);
-                }
-            }
-
-            document.getElementById("passcode-btn").addEventListener("click", checkPasscode);
-            document.querySelectorAll(".next-btn").forEach(button => {
-                button.addEventListener("click", nextPage);
-            });
-
-            showPage(0); // Show the first page initially
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
