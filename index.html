@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Our Love Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="page" id="passcode-page">
-        <h1>Enter Passcode</h1>
-        <input type="password" id="passcode-input">
-        <button id="passcode-btn">Enter</button>
-        <p id="passcode-error" class="error"></p>
-    </div>
-
-    <div class="page" id="timer-page">
-        <h1>Time Since We Got Together 💖</h1>
-        <p id="timer"></p>
-        <button class="next-btn">Next</button>
-    </div>
-
-    <div class="page" id="message-page">
-        <h1>Click the Envelope 💌</h1>
-        <div id="envelope"></div>
-        <div id="love-letter">
-            <p>I love you! ❤️</p>
-            <button class="next-btn">Next</button>
+    <div class="container">
+        <h1>Click the Envelope ❤️</h1>
+        <img src="envelope.png" id="envelope" class="envelope" onclick="openMessage()">
+        <div id="message" class="hidden">
+            <p>Happy Birthday, my love! 🎉💕</p>
+        </div>
+        
+        <div class="password-container">
+            <label for="password">Enter Passcode:</label>
+            <input type="text" id="password" placeholder="Hint: It's our anniversary date">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+        
+        <div class="timer">
+            <h2>We've been together since...</h2>
+            <p id="timeTogether"></p>
+        </div>
+        
+        <div class="vinyl-container">
+            <div class="vinyl" id="vinyl1">
+                <img src="button1.png" class="vinyl-cover" id="cover1">
+                <button onclick="togglePlay(1)">Play Song</button>
+            </div>
+            <div class="vinyl" id="vinyl2">
+                <img src="button2.png" class="vinyl-cover" id="cover2">
+                <button onclick="togglePlay(2)">Play Song</button>
+            </div>
+            <div class="vinyl" id="vinyl3">
+                <img src="button3.png" class="vinyl-cover" id="cover3">
+                <button onclick="togglePlay(3)">Play Song</button>
+            </div>
         </div>
     </div>
-
-    <div class="page" id="vinyl-page">
-        <h1>Our Songs 🎶</h1>
-        <div id="vinyl-container"></div>
-        <button id="last-next-btn" class="next-btn">Next</button>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
+
