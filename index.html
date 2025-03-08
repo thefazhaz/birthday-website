@@ -3,35 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Story</title>
+    <title>Our Special Page</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Click to Reveal ❤️</h1>
-        <button class="reveal-button" onclick="openMessage()">💌 Open</button>
-        
-        <div id="message" class="hidden">
-            <p>Happy Birthday, my love! 🎉💕</p>
-        </div>
-        
-        <div class="password-container">
-            <label for="password">Enter Passcode:</label>
-            <input type="text" id="password" placeholder="Hint: It's our anniversary date">
-            <button onclick="checkPassword()">Submit</button>
-        </div>
-        
-        <div class="timer">
-            <h2>We've been together since...</h2>
-            <p id="timeTogether"></p>
-        </div>
-        
-        <div class="vinyl-container">
-            <button class="vinyl" onclick="togglePlay(1)">💿 Play Song 1</button>
-            <button class="vinyl" onclick="togglePlay(2)">💿 Play Song 2</button>
-            <button class="vinyl" onclick="togglePlay(3)">💿 Play Song 3</button>
-        </div>
+<body onload="startTimer()">
+
+    <!-- Passcode Page -->
+    <div id="passcodePage">
+        <h1>Enter Passcode 💕</h1>
+        <input type="password" id="passcodeInput" placeholder="Hint: It's our anniversary">
+        <button onclick="checkPasscode()">Submit</button>
     </div>
+
+    <!-- Timer Page -->
+    <div id="timerPage" style="display: none;">
+        <h1>We've been together since...</h1>
+        <p id="timer"></p>
+        <button onclick="showPage('envelopePage')">Next 💌</button>
+    </div>
+
+    <!-- Envelope Page -->
+    <div id="envelopePage" style="display: none;">
+        <h1>Click to Reveal ❤️</h1>
+        <button onclick="showPage('songsPage')">💌 Open</button>
+    </div>
+
+    <!-- Songs Page -->
+    <div id="songsPage" style="display: none;">
+        <h1>Your Songs 🎶</h1>
+        <button onclick="playSong('song1')">💿 Play Song 1</button>
+        <button onclick="playSong('song2')">💿 Play Song 2</button>
+        <button onclick="playSong('song3')">💿 Play Song 3</button>
+        <audio id="song1" src="song1.mp3"></audio>
+        <audio id="song2" src="song2.mp3"></audio>
+        <audio id="song3" src="song3.mp3"></audio>
+    </div>
+
+    <script>
+        function checkPasscode() {
+            const input = document.getElementById('passcodeInput').value;
+            if (input === "21022024") { 
+                showPage('timerPage');
+            } else {
+                alert("Wrong passcode! Try again 💕");
+            }
+        }
+
+        function showPage(pageId) {
+            document.getElementById("passcodePage").style.display = "none";
+            document.getElementById("timerPage").style.display = "none";
+            document.getElementById("envelopePage").style.display = "none";
+            document.getElementById("songsPage").style.display = "none";
+            document.getElementById(pageId).style.display = "block";
+        }
+
+        function startTimer() {
+            const startDate = new Date("2024-02-21T00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = now - startDate;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById("timer").innerHTML = `${days} days ${hours} hrs ${minutes} min ${seconds} sec 💕`;
+            }, 1000);
+        }
+
+        function playSong(songId) {
+            document.getElementById(songId).play();
+        }
+    </script>
+
 </body>
 </html>
