@@ -5,6 +5,8 @@ body {
     text-align: center;
     background-color: #FFD1DC; /* Light Pink */
     color: #A30052; /* Dark Pink */
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
