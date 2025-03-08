@@ -1,21 +1,37 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f8dcdc;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600&display=swap');
 
-.container {
-    margin-top: 50px;
+body {
+    font-family: 'Bodoni Moda', serif;
+    background-color: #FFF0F5;
+    color: #FF69B4;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {
-    font-size: 28px;
-    color: #a94455;
+    font-family: 'Bodoni Moda', serif;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .envelope {
     width: 100px;
     cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.envelope:hover {
+    transform: scale(1.1);
 }
 
 .hidden {
@@ -27,50 +43,49 @@ h1 {
 }
 
 input {
-    padding: 8px;
-    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #FF69B4;
+    font-family: 'Bodoni Moda', serif;
 }
 
 button {
-    padding: 8px 15px;
-    background-color: #ff8ba7;
-    border: none;
-    cursor: pointer;
+    padding: 10px;
+    background: #FF69B4;
     color: white;
-    font-size: 14px;
-    border-radius: 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Bodoni Moda', serif;
+}
+
+button:hover {
+    background: #FF1493;
 }
 
 .timer {
-    margin-top: 30px;
+    margin-top: 20px;
+    font-weight: 600;
 }
 
 .vinyl-container {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
-    gap: 20px;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .vinyl {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
-.vinyl-cover {
-    width: 100px;
-    height: 100px;
+.vinyl img {
+    width: 80px;
     border-radius: 50%;
-    border: 5px solid pink;
+    transition: transform 0.3s;
 }
 
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.spinning {
-    animation: spin 3s linear infinite;
+.vinyl img:hover {
+    transform: rotate(10deg);
 }
