@@ -1,68 +1,25 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
-
-/* General Styles */
 body {
-    font-family: "Bodoni Moda", serif;
+    font-family: 'Bodoni Moda', serif;
     background-color: #f8d7da;
     color: #b03a5b;
     text-align: center;
-    margin: 0;
-    padding: 0;
 }
 
-/* Page Styling */
-.page {
-    display: none;
-    padding: 20px;
+h1, h2, h3 {
+    color: #b03a5b;
 }
 
-.active {
-    display: block;
-}
-
-/* Buttons */
 button {
     background-color: #e57373;
-    color: #fff;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
 }
 
-button:hover {
-    background-color: #ff4081;
-}
-
-/* Envelope Animation */
-.envelope {
-    width: 100px;
-    height: 80px;
-    background: #ff69b4;
-    margin: 20px auto;
-    cursor: pointer;
-    position: relative;
-    animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Love Letter */
-.letter {
-    display: none;
-    font-size: 22px;
-    color: #b03a5b;
-}
-
-/* Vinyl Player */
-.vinyl-wrapper {
-    text-align: center;
-    margin: 20px auto;
+.heart {
+    color: #ff69b4;
 }
 
 .vinyl {
@@ -78,4 +35,3 @@ button:hover {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
