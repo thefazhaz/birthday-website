@@ -1,3 +1,6 @@
+/* Restore font */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
+
 body {
     font-family: "Bodoni Moda", serif;
     background-color: #f8d7da;
@@ -11,22 +14,46 @@ body {
     margin-top: 50px;
 }
 
-/* Envelope Style */
+/* Button styling */
+button {
+    background-color: #e57373;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff4081;
+}
+
+/* Envelope animation */
 .envelope {
     width: 100px;
     height: 80px;
     background: #ff69b4;
     margin: 20px auto;
     cursor: pointer;
+    position: relative;
+    transform-origin: top;
+    animation: bounce 1s infinite;
 }
 
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Love letter */
 .letter {
     display: none;
     color: #b03a5b;
     font-size: 20px;
 }
 
-/* Vinyl Record */
+/* Vinyl spinning */
 .vinyl-wrapper {
     text-align: center;
     margin: 20px auto;
@@ -44,4 +71,17 @@ body {
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+/* Love hearts floating */
+@keyframes floating-hearts {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+.heart {
+    color: #ff69b4;
+    font-size: 20px;
+    position: absolute;
+    animation: floating-hearts 2s infinite ease-in-out;
 }
