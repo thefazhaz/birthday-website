@@ -1,42 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,100&display=swap');
-
 body {
-    background-color: #FFD6E0; /* Light pink */
-    color: #C71585; /* Dark pink */
+    background-color: #ffe6f2; /* Light pink */
+    color: #d63384; /* Dark pink */
     font-family: 'Bodoni Moda', serif;
     text-align: center;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 2rem;
 }
 
 button {
-    background-color: #FFB6C1; /* Pastel pink */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Bodoni Moda', serif;
+    background-color: #ffb6c1; /* Pastel pink */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
-}
-
-input {
-    padding: 10px;
-    border: 2px solid #C71585;
-    border-radius: 10px;
+    font-weight: 100;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
 .hidden {
     display: none;
-}
-
-.song {
-    margin: 20px;
-}
-
-iframe {
-    border-radius: 20px;
 }
