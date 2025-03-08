@@ -1,46 +1,44 @@
-// Show the correct page
-function showPage(pageId) {
-    document.getElementById("passcodePage").style.display = "none";
-    document.getElementById("timerPage").style.display = "none";
-    document.getElementById("envelopePage").style.display = "none";
-    document.getElementById("songsPage").style.display = "none";
-    document.getElementById(pageId).style.display = "block";
-}
+document.addEventListener("DOMContentLoaded", function () {
+    updateTimer();
+    setInterval(updateTimer, 1000);
+});
 
-// Check the passcode
-function checkPasscode() {
-    const input = document.getElementById('passcodeInput').value;
-    if (input === "21022024") {  // Change to your correct passcode
-        showPage('timerPage');
+function checkPassword() {
+    const password = document.getElementById("password").value;
+    if (password === "21022024") {
+        nextPage(2);
     } else {
-        alert("Wrong passcode! Try again 💕");
+        alert("Wrong passcode! Try again.");
     }
 }
 
-// Start timer with Days, Hours, Minutes, and Seconds
-function startTimer() {
-    const startDate = new Date("2024-02-21T00:00:00").getTime();
-    setInterval(() => {
-        const now = new Date().getTime();
-        const diff = now - startDate;
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        document.getElementById("timer").innerHTML = `${days} days ${hours} hrs ${minutes} min ${seconds} sec 💕`;
-    }, 1000);
+function updateTimer() {
+    const startDate = new Date("February 21, 2024 00:00:00").getTime();
+    const now = new Date().getTime();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("timeTogether").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Reveal the love message THEN show Next button
-function revealMessage() {
-    document.getElementById("loveMessage").style.display = "block";
-    document.getElementById("toSongsPage").style.display = "block";
+function openMessage() {
+    document.getElementById("message").classList.remove("hidden");
 }
 
-// Play Songs
-function playSong(songId) {
-    let song = document.getElementById(songId);
-    song.play();
+function nextPage(pageNumber) {
+    document.querySelectorAll(".page").forEach(page => page.classList.add("hidden"));
+    document.getElementById(`page${pageNumber}`).classList.remove("hidden");
+}
+
+function openSpotify(songNumber) {
+    const songLinks = [
+        "https://open.spotify.com/track/4XTgFBxBHN6var1BzAgE1m?si=f5f47696be07408f",
+        "https://open.spotify.com/track/2kSb3wYSOV996xA2NSmpck?si=cc8f5d93c8cc45ee",
+        "https://open.spotify.com/track/5F79ZdjOwGOhUKRHx94sr1?si=cda416dcbee04662"
+    ];
+    window.open(songLinks[songNumber - 1], "_blank");
 }
