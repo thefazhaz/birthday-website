@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function checkPassword() {
     const password = document.getElementById("password").value;
-    if (password === "21022024") {
+    if (password === "210212024") {
         nextPage(2);
     } else {
         alert("Wrong passcode! Try again.");
