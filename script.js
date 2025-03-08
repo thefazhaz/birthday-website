@@ -1,12 +1,4 @@
-function checkPasscode() {
-    const input = document.getElementById('passcodeInput').value;
-    if (input === "21022024") { 
-        showPage('timerPage');
-    } else {
-        alert("Wrong passcode! Try again 💕");
-    }
-}
-
+// Show the correct page
 function showPage(pageId) {
     document.getElementById("passcodePage").style.display = "none";
     document.getElementById("timerPage").style.display = "none";
@@ -15,6 +7,17 @@ function showPage(pageId) {
     document.getElementById(pageId).style.display = "block";
 }
 
+// Check the passcode
+function checkPasscode() {
+    const input = document.getElementById('passcodeInput').value;
+    if (input === "21022024") {  // Change to your correct passcode
+        showPage('timerPage');
+    } else {
+        alert("Wrong passcode! Try again 💕");
+    }
+}
+
+// Start timer with Days, Hours, Minutes, and Seconds
 function startTimer() {
     const startDate = new Date("2024-02-21T00:00:00").getTime();
     setInterval(() => {
@@ -30,11 +33,13 @@ function startTimer() {
     }, 1000);
 }
 
+// Reveal the love message THEN show Next button
 function revealMessage() {
     document.getElementById("loveMessage").style.display = "block";
     document.getElementById("toSongsPage").style.display = "block";
 }
 
+// Play Songs
 function playSong(songId) {
     let song = document.getElementById(songId);
     song.play();
