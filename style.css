@@ -1,7 +1,7 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap');
 
-/* Body Styling */
+/* General Styles */
 body {
     font-family: "Bodoni Moda", serif;
     background-color: #f8d7da;
@@ -11,10 +11,14 @@ body {
     padding: 0;
 }
 
-/* Page Setup */
+/* Page Styling */
 .page {
     display: none;
     padding: 20px;
+}
+
+.active {
+    display: block;
 }
 
 /* Buttons */
@@ -73,17 +77,4 @@ button:hover {
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-}
-
-/* Floating Hearts Animation */
-.heart {
-    position: absolute;
-    color: #ff69b4;
-    font-size: 20px;
-    animation: floating-hearts 2s infinite ease-in-out;
-}
-
-@keyframes floating-hearts {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100px); opacity: 0; }
 }
