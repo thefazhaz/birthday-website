@@ -1,36 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-    startTimer("2024-02-21");
-});
-
-function checkPassword() {
-    let password = document.getElementById("password").value;
-    if (password === "21022024") {
-        nextPage(2);
+// Check Passcode
+function checkPasscode() {
+    let passcode = document.getElementById('passcodeInput').value;
+    if (passcode === "yourPasscode") {  // Change this to the actual passcode
+        nextPage('timerPage');
     } else {
-        document.getElementById("error-message").innerText = "Wrong passcode!";
+        alert("Wrong passcode! Try again.");
     }
 }
 
-function nextPage(pageNumber) {
-    document.querySelectorAll(".page").forEach(page => page.classList.add("hidden"));
-    document.getElementById(`page${pageNumber}`).classList.remove("hidden");
+// Navigate Pages
+function nextPage(pageId) {
+    document.querySelectorAll("section").forEach(section => {
+        section.classList.add("hidden");
+    });
+    document.getElementById(pageId).classList.remove("hidden");
 }
 
-function startTimer(startDate) {
-    let startTime = new Date(startDate).getTime();
-    setInterval(function () {
-        let now = new Date().getTime();
-        let distance = now - startTime;
-
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("timeTogether").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+// Timer Function
+function startTimer() {
+    let startDate = new Date("YYYY-MM-DD"); // Change this to your actual anniversary date
+    setInterval(() => {
+        let now = new Date();
+        let difference = now - startDate;
+        let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        let minutes = Math.floor((difference / (1000 * 60)) % 60);
+        let seconds = Math.floor((difference / 1000) % 60);
+        document.getElementById('timer').innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
 }
 
-function openMessage() {
-    document.getElementById("message").classList.remove("hidden");
+// Envelope Reveal
+function revealMessage() {
+    document.getElementById('loveMessage').classList.remove("hidden");
+    document.getElementById('nextToSongs').classList.remove("hidden");
 }
