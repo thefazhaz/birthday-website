@@ -3,50 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Story</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>Our Special Website 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="page" id="page1">
-            <h1>Enter Passcode</h1>
-            <input type="text" id="password" placeholder="Hint: It's our anniversary date">
-            <button onclick="checkPassword()">Submit</button>
-        </div>
 
-        <div class="page hidden" id="page2">
-            <h1>We've been together since...</h1>
-            <p id="timeTogether"></p>
-            <button onclick="nextPage(3)">Next</button>
-        </div>
+    <!-- Page 1: Passcode -->
+    <section id="passcodePage">
+        <h1>Enter Passcode to Continue</h1>
+        <input type="text" id="passcodeInput" placeholder="Hint: It's our anniversary">
+        <button onclick="checkPasscode()">Submit</button>
+    </section>
 
-        <div class="page hidden" id="page3">
-            <h1>Click the Envelope 💌</h1>
-            <img src="envelope.png" id="envelope" class="envelope" onclick="openMessage()">
-            <div id="message" class="hidden">
-                <p>Happy Birthday, my love! 🎉💕</p>
-                <button onclick="nextPage(4)">Next</button>
-            </div>
-        </div>
+    <!-- Page 2: Timer -->
+    <section id="timerPage" class="hidden">
+        <h1>We've been together for...</h1>
+        <p id="timer"></p>
+        <button onclick="nextPage('envelopePage')">Next</button>
+    </section>
 
-        <div class="page hidden" id="page4">
-            <h1>Songs That Remind Me of You</h1>
-            <div class="vinyl-container">
-                <div class="vinyl" id="vinyl1">
-                    <img src="button1.png" class="vinyl-cover">
-                    <button onclick="openSpotify(1)">Play Song</button>
-                </div>
-                <div class="vinyl" id="vinyl2">
-                    <img src="button2.png" class="vinyl-cover">
-                    <button onclick="openSpotify(2)">Play Song</button>
-                </div>
-                <div class="vinyl" id="vinyl3">
-                    <img src="button3.png" class="vinyl-cover">
-                    <button onclick="openSpotify(3)">Play Song</button>
-                </div>
-            </div>
+    <!-- Page 3: Envelope -->
+    <section id="envelopePage" class="hidden">
+        <h1>Click to Reveal Your Message 💌</h1>
+        <button id="revealButton" onclick="revealMessage()">Click to Reveal</button>
+        <p id="loveMessage" class="hidden">Happy Birthday, my love! You mean the world to me. 💖</p>
+        <button id="nextToSongs" class="hidden" onclick="nextPage('songsPage')">Next</button>
+    </section>
+
+    <!-- Page 4: Songs -->
+    <section id="songsPage" class="hidden">
+        <h1>Songs That Remind Me of You 💕</h1>
+        <div class="song">
+            <iframe src="https://open.spotify.com/embed/track/4XTgFBxBHN6var1BzAgE1m?utm_source=generator" allow="autoplay"></iframe>
         </div>
-    </div>
+        <div class="song">
+            <iframe src="https://open.spotify.com/embed/track/2kSb3wYSOV996xA2NSmpck?utm_source=generator" allow="autoplay"></iframe>
+        </div>
+        <div class="song">
+            <iframe src="https://open.spotify.com/embed/track/5F79ZdjOwGOhUKRHx94sr1?utm_source=generator" allow="autoplay"></iframe>
+        </div>
+    </section>
+
 </body>
 </html>
