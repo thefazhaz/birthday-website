@@ -9,37 +9,41 @@
 </head>
 <body>
     <div class="container">
-        <!-- PAGE 1: PASSWORD -->
-        <div id="page1">
-            <h1>Enter Passcode to Continue</h1>
-            <input type="text" id="password" placeholder="Hint: It's our anniversary date">
+        <div class="page" id="page1">
+            <h1>Enter Passcode</h1>
+            <p class="hint">Hint: It's our anniversary date</p>
+            <input type="text" id="password" placeholder="DDMMYYYY">
             <button onclick="checkPassword()">Submit</button>
+            <p id="error-message" class="error"></p>
         </div>
 
-        <!-- PAGE 2: TIMER -->
-        <div id="page2" class="hidden">
-            <h1>We've been together for...</h1>
+        <div class="page hidden" id="page2">
+            <h1>We've been together since...</h1>
             <p id="timeTogether"></p>
-            <button onclick="showPage(3)">Next</button>
+            <button onclick="nextPage(3)">Next</button>
         </div>
 
-        <!-- PAGE 3: ENVELOPE MESSAGE -->
-        <div id="page3" class="hidden">
-            <h1>Click the Envelope 💌</h1>
-            <img src="envelope.png" id="envelope" class="envelope" onclick="openMessage()">
+        <div class="page hidden" id="page3">
+            <h1>💌 Click to Open</h1>
+            <div class="envelope" onclick="openMessage()"></div>
             <div id="message" class="hidden">
-                <p>Happy Birthday, my love! You mean the world to me. 💖</p>
-                <button onclick="showPage(4)">Next</button>
+                <p>My love, every moment with you is a dream come true... 💖</p>
+                <button onclick="nextPage(4)">Next</button>
             </div>
         </div>
 
-        <!-- PAGE 4: SONGS -->
-        <div id="page4" class="hidden">
-            <h1>Songs That Remind Me of You 💕</h1>
-            <div class="spotify-container">
-                <iframe src="https://open.spotify.com/embed/track/4XTgFBxBHN6var1BzAgE1m" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                <iframe src="https://open.spotify.com/embed/track/2kSb3wYSOV996xA2NSmpck" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                <iframe src="https://open.spotify.com/embed/track/5F79ZdjOwGOhUKRHx94sr1" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <div class="page hidden" id="page4">
+            <h1>Songs That Remind Me of You</h1>
+            <div class="vinyl-container">
+                <a href="https://open.spotify.com/track/4XTgFBxBHN6var1BzAgE1m?si=f5f47696be07408f" target="_blank">
+                    <div class="vinyl"></div>
+                </a>
+                <a href="https://open.spotify.com/track/2kSb3wYSOV996xA2NSmpck?si=cc8f5d93c8cc45ee" target="_blank">
+                    <div class="vinyl"></div>
+                </a>
+                <a href="https://open.spotify.com/track/5F79ZdjOwGOhUKRHx94sr1?si=cda416dcbee04662" target="_blank">
+                    <div class="vinyl"></div>
+                </a>
             </div>
         </div>
     </div>
