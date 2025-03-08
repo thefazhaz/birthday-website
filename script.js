@@ -1,14 +1,18 @@
 function checkPasscode() {
     const input = document.getElementById('passcodeInput').value;
     if (input === "21022024") { 
-        window.location.href = "timer.html";
+        showPage('timerPage');
     } else {
         alert("Wrong passcode! Try again 💕");
     }
 }
 
-function nextPage(page) {
-    window.location.href = page;
+function showPage(pageId) {
+    document.getElementById("passcodePage").style.display = "none";
+    document.getElementById("timerPage").style.display = "none";
+    document.getElementById("envelopePage").style.display = "none";
+    document.getElementById("songsPage").style.display = "none";
+    document.getElementById(pageId).style.display = "block";
 }
 
 function startTimer() {
@@ -27,5 +31,7 @@ function startTimer() {
 }
 
 function playSong(songId) {
-    document.getElementById(songId).play();
+    let song = document.getElementById(songId);
+    song.play();
 }
+
