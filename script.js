@@ -1,45 +1,36 @@
-// PASSWORD CHECK FUNCTION
+document.addEventListener("DOMContentLoaded", function () {
+    startTimer("2024-02-21");
+});
+
 function checkPassword() {
-    var password = document.getElementById("password").value;
-    if (password === "21022024") { 
-        showPage(2);
+    let password = document.getElementById("password").value;
+    if (password === "21022024") {
+        nextPage(2);
     } else {
-        alert("Wrong password! Try again.");
+        document.getElementById("error-message").innerText = "Wrong passcode!";
     }
 }
 
-// TIMER FUNCTION (Page 2)
-function updateTimer() {
-    const startDate = new Date("February 21, 2024 00:00:00");
-    const now = new Date();
-    const difference = now - startDate;
-
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((difference / (1000 * 60)) % 60);
-    const seconds = Math.floor((difference / 1000) % 60);
-
-    document.getElementById("timeTogether").innerHTML = 
-        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-
-    setTimeout(updateTimer, 1000);
+function nextPage(pageNumber) {
+    document.querySelectorAll(".page").forEach(page => page.classList.add("hidden"));
+    document.getElementById(`page${pageNumber}`).classList.remove("hidden");
 }
 
-// FUNCTION TO SHOW SPECIFIC PAGES
-function showPage(pageNumber) {
-    document.getElementById("page1").classList.add("hidden");
-    document.getElementById("page2").classList.add("hidden");
-    document.getElementById("page3").classList.add("hidden");
-    document.getElementById("page4").classList.add("hidden");
+function startTimer(startDate) {
+    let startTime = new Date(startDate).getTime();
+    setInterval(function () {
+        let now = new Date().getTime();
+        let distance = now - startTime;
 
-    document.getElementById("page" + pageNumber).classList.remove("hidden");
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (pageNumber === 2) {
-        updateTimer(); // Start timer only on Page 2
-    }
+        document.getElementById("timeTogether").innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
 }
 
-// FUNCTION TO OPEN MESSAGE ON ENVELOPE PAGE
 function openMessage() {
     document.getElementById("message").classList.remove("hidden");
 }
