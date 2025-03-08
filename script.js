@@ -17,15 +17,25 @@ function checkPassword() {
     }
 }
 
-function calculateTimeTogether() {
-    let startDate = new Date(2024, 1, 21); // 21 Feb 2024
+    updateTimeTogether();
+    setInterval(updateTimeTogether, 1000); // Update every second
+});
+
+function updateTimeTogether() {
+    let startDate = new Date(2024, 1, 21); // 21 Feb 2024 (Months are 0-based, so 1 = February)
     let now = new Date();
     
     let difference = now - startDate;
-    let daysTogether = Math.floor(difference / (1000 * 60 * 60 * 24));
     
-    document.getElementById("timeTogether").innerHTML = `${daysTogether} days together 💕`;
+    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    let minutes = Math.floor((difference / (1000 * 60)) % 60);
+    let seconds = Math.floor((difference / 1000) % 60);
+    
+    document.getElementById("timeTogether").innerHTML = 
+        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds together 💕`;
 }
+
 
 function togglePlay(songNumber) {
     alert(`Playing song ${songNumber} 🎵`);
